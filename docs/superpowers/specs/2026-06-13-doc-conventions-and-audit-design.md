@@ -1,3 +1,7 @@
+---
+type: spec
+---
+
 # 設計: ドキュメントの書く型と腐らせない仕組み(doc-conventions + doc-audit)
 
 日付: 2026-06-13

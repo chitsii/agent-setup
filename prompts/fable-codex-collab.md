@@ -1,3 +1,10 @@
+---
+type: runbook
+owner: chitsii
+last_reviewed: 2026-06-13
+review_cycle_days: 180
+---
+
 # Fable×Codex 協業方針
 
 プロジェクトの CLAUDE.md またはグローバル `~/.claude/CLAUDE.md` に、下の区切り線から先をコピーして使う断片。

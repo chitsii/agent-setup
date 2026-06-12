@@ -1,3 +1,13 @@
+---
+type: runbook
+owner: chitsii
+last_reviewed: 2026-06-13
+review_cycle_days: 180
+watches:
+  - .claude/settings.json
+  - .codex/hooks.json
+---
+
 # beads チケット制タスク管理(CLAUDE.md 断片)
 
 グローバル CLAUDE.md に貼って使う。リポジトリ個別の詳細ルール(コマンドリファレンスやセッション完了プロトコル)は `bd init` が各リポジトリの CLAUDE.md / AGENTS.md に管理ブロックとして自動挿入するので、この断片はそれを補完する横断ルールだけを持つ。

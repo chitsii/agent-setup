@@ -1,6 +1,6 @@
 ---
 name: doc-audit
-description: Use when auditing document freshness — ドキュメントの鮮度切れ(stale)や code↔docs 乖離(drift)を検出して bd チケット化するとき。トリガー例: 「/doc-audit」「ドキュメント監査して」「docs が古くなってないか確認して」、機能完成・セッション終了の節目。
+description: "Use when auditing document freshness — ドキュメントの鮮度切れ(stale)や code↔docs 乖離(drift)を検出して bd チケット化するとき。トリガー例: 「/doc-audit」「ドキュメント監査して」「docs が古くなってないか確認して」、機能完成・セッション終了の節目。"
 ---
 
 # doc-audit

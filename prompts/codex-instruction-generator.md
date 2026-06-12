@@ -1,3 +1,10 @@
+---
+type: runbook
+owner: chitsii
+last_reviewed: 2026-06-13
+review_cycle_days: 180
+---
+
 # Codex 実装指示書ジェネレーター
 
 Fable（または設計担当モデル）に渡すプロンプト。コードベースを読ませて、Codex がそのまま完遂できる実装指示書 `instructions.md` を作らせる。
