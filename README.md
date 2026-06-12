@@ -54,6 +54,7 @@ install.sh は何度実行しても安全。壊れたリンクは張り直し、
 |--------|------|-----------|
 | [x-bookmarks](skills/x-bookmarks/SKILL.md) | 自分のXブックマークを同期してローカル検索 | `uv tool install twitter-cli`、jq、XのCookie認証 |
 | [codex-delegate](skills/codex-delegate/SKILL.md) | Codexへの実装委譲とコミット前セルフレビュー（ファイルベース・ポーリング不要） | codex CLI（herdrは任意） |
+| [doc-audit](skills/doc-audit/SKILL.md) | ドキュメントの鮮度切れ・コード乖離を検出して bd チケット化 | uv、git（bd は任意） |
 
 例えば x-bookmarks なら、twitter-cli を入れて `~/.config/x-bookmarks/auth.env` に Cookie を置き、初回同期を流すところまでやって初めて検索が動く。詳細は [SKILL.md](skills/x-bookmarks/SKILL.md) の Auth Setup を参照。
 
@@ -81,6 +82,7 @@ bash skills/x-bookmarks/scripts/sync.sh        # 差分同期
 | [fable-codex-collab.md](prompts/fable-codex-collab.md) | Fable=設計/レビュー、Codex=実装の役割分担。CLAUDE.md に貼る断片 |
 | [codex-instruction-generator.md](prompts/codex-instruction-generator.md) | コードベースを読ませて Codex 向け実装指示書を作らせるプロンプト |
 | [beads-tickets.md](prompts/beads-tickets.md) | beads（bd）によるチケット制タスク管理の運用規約。グローバル CLAUDE.md に貼る断片 |
+| [doc-conventions.md](prompts/doc-conventions.md) | ドキュメントの種類・置き場所・鮮度管理（frontmatter）の規約。CLAUDE.md に貼る断片 |
 
 ## タスク管理（beads）
 

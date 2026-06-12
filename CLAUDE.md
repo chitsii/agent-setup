@@ -10,6 +10,10 @@ Claude Code / Codex 共用のスキルとプロンプト集を配布するため
 
 タスクは beads（`bd`）で管理する。Markdown の TODO リストはもう作らない。運用規約は [prompts/beads-tickets.md](prompts/beads-tickets.md) を参照（本リポジトリで試験運用中。検証後にグローバル CLAUDE.md へ昇格予定）。セッション開始時は `bd ready`。
 
+## ドキュメント規約
+
+ドキュメントの種類・frontmatter・鮮度管理は [prompts/doc-conventions.md](prompts/doc-conventions.md) を試験運用中（検証後にグローバル昇格予定）。監査は doc-audit スキルで行い、結果は bd に起票する。
+
 
 <!-- BEGIN BEADS INTEGRATION v:1 profile:minimal hash:6cd5cc61 -->
 ## Beads Issue Tracker
