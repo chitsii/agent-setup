@@ -84,7 +84,7 @@ bash skills/x-bookmarks/scripts/sync.sh        # 差分同期
 
 ## タスク管理（beads）
 
-このリポジトリのタスクは [beads](https://github.com/steveyegge/beads)（`bd`）で管理している。チケットの実体はローカルの Dolt DB（`.beads/embeddeddolt/`、git 管理外）にあり、`.beads/issues.jsonl` はその閲覧用エクスポート。マシン間同期はリモート追加後に `bd dolt push / pull` で行う。
+このリポジトリのタスクは [beads](https://github.com/steveyegge/beads)（`bd`）で管理している。ステルス運用にしており、`.beads/` は丸ごと git 管理外（`.git/info/exclude` で除外）。チケットの実体はローカルの Dolt DB にあり、マシン間同期はリモート追加後の `bd dolt push / pull`、別マシンでの初期化は `bd init` で行う。
 
 ```bash
 brew install beads        # または npm install -g @beads/bd

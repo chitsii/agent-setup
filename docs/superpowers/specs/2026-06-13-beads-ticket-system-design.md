@@ -85,6 +85,10 @@ beads がタスクの単一の受け皿となり、indexion の乖離検出結�
 - `bd init` が CLAUDE.md に挿入する管理ブロックの内容が本設計の運用規約と一部重複するため、`prompts/beads-tickets.md` は管理ブロックを補完する横断ルールのみに絞った
 - 発見した問題は bd チケットとして起票: auto-export のコミットタイミング問題(agent-setup-bwg)、管理ブロックとハーネス規約の衝突(agent-setup-i8x)
 
+### 追記(同日): ステルスモードへ移行
+
+issues.jsonl のコミット churn(agent-setup-bwg)の根本解決と、公開予定リポジトリへのタスク露出回避のため、ユーザー判断で**ステルス運用**に切り替えた。`.beads/` を git 追跡から除外(`git rm -r --cached` + `.git/info/exclude`)。auto-export はローカルビューア用に有効のまま。これに伴い bwg はクローズ(コミット手順の規約化は不要になった)。エージェント統合ファイル(CLAUDE.md 管理ブロック、.claude/settings.json、.codex/、AGENTS.md)は開発設定としてコミット対象のまま。
+
 ## 検証(実機検証してから完了とする)
 
 1. `bd create` → `bd ready` → `bd close` の一連が動く
