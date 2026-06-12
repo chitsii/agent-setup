@@ -89,6 +89,9 @@ bash skills/x-bookmarks/scripts/sync.sh        # 差分同期
 ```bash
 brew install beads        # または npm install -g @beads/bd
 bd ready                  # 着手可能なタスク一覧
+
+npm install -g beads-ui   # 人間向けWeb UI
+bdui start --open         # localhost:3000 にカンバン(Dolt直結・ライブ更新)
 ```
 
 運用規約は [prompts/beads-tickets.md](prompts/beads-tickets.md) を参照。Claude Code / Codex 向けのフックや指示ファイルは `bd init` が自動でプロジェクト配下に導入する。

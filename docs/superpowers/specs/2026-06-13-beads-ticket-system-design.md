@@ -89,6 +89,10 @@ beads がタスクの単一の受け皿となり、indexion の乖離検出結�
 
 issues.jsonl のコミット churn(agent-setup-bwg)の根本解決と、公開予定リポジトリへのタスク露出回避のため、ユーザー判断で**ステルス運用**に切り替えた。`.beads/` を git 追跡から除外(`git rm -r --cached` + `.git/info/exclude`)。auto-export はローカルビューア用に有効のまま。これに伴い bwg はクローズ(コミット手順の規約化は不要になった)。エージェント統合ファイル(CLAUDE.md 管理ブロック、.claude/settings.json、.codex/、AGENTS.md)は開発設定としてコミット対象のまま。
 
+### 追記(同日): 人間向けUIとして beads-ui を導入
+
+[mantoni/beads-ui](https://github.com/mantoni/beads-ui) v0.12.0 を `npm install -g beads-ui` で導入。`bdui start --open` で localhost:3000 にカンバン/インライン編集/ライブ更新の Web UI(Dolt 直結、エクスポート不要)。これに伴い auto-export(issues.jsonl)は無効化した。TUI 派の代替は bv([Dicklesworthstone/beads_viewer](https://github.com/Dicklesworthstone/beads_viewer)、要・手動 `bd export`)。選定根拠は beads 公式 COMMUNITY_TOOLS.md の Dolt 対応リスト。
+
 ## 検証(実機検証してから完了とする)
 
 1. `bd create` → `bd ready` → `bd close` の一連が動く
