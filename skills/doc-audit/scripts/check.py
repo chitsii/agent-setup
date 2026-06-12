@@ -115,7 +115,14 @@ def main():
                              "watched_changes": []})
             continue
 
-        cycle = int(fm.get("review_cycle_days") or DEFAULT_CYCLE_DAYS[fm["type"]])
+        cycle_raw = fm.get("review_cycle_days")
+        try:
+            cycle = int(cycle_raw) if cycle_raw is not None else DEFAULT_CYCLE_DAYS[fm["type"]]
+        except (TypeError, ValueError):
+            findings.append({"file": rel, "status": "violation",
+                             "reason": f"review_cycle_days が整数として読めない: {cycle_raw!r}",
+                             "watched_changes": []})
+            continue
         if reviewed + dt.timedelta(days=cycle) < today:
             findings.append({"file": rel, "status": "stale",
                              "reason": f"レビュー期限切れ: last_reviewed={reviewed} + {cycle}日 < {today}",
