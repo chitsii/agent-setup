@@ -4,3 +4,4 @@ skills/*/data/
 *.env
 *.bak.*
 *.log
+.claude/settings.local.json
