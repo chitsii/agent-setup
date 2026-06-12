@@ -12,7 +12,8 @@ Claude Code / Codex 共用のスキルとプロンプト集を配布するため
 - [ ] codex-delegate の herdr 閲覧ペインの使い勝手改善（完了後にペインが残る。自動クローズや完了表示を検討）
 - [ ] herdr の `pane read` / `wait output` が無人ペインで空を返す問題の調査（別セッションで実施予定。判明済み: 人が見ているペインなら動く。要確認: ソース実装上の意図か不具合か。リポジトリ: https://github.com/ogulcancelik/herdr ）
 - [ ] Codex が `~/.codex/skills/` の symlink スキルを実際に認識するか実機検証
-- [ ] prompts/fable-codex-collab.md をグローバル `~/.claude/CLAUDE.md` に取り込むか検討（取り込む場合は既存の Codex Review ルールとの重複を整理）
+- [x] グローバル `~/.claude/CLAUDE.md` の Codex Review ルールを codex-delegate スキル方式に差し替え（2026-06-13。実体は `/mnt/c/Users/tishi/.claude/CLAUDE.md`、WSL2/Windows共有）
+- [ ] prompts/fable-codex-collab.md（役割分担）をグローバル CLAUDE.md にも取り込むか検討
 - [ ] GitHub 公開（リモート追加、README の `<this-repo>` を実URLへ差し替え）
 - [ ] macOS での install.sh 動作検証（`pwd -P` 化済みだが未検証）
 
