@@ -80,6 +80,18 @@ bash skills/x-bookmarks/scripts/sync.sh        # 差分同期
 |----------|------|
 | [fable-codex-collab.md](prompts/fable-codex-collab.md) | Fable=設計/レビュー、Codex=実装の役割分担。CLAUDE.md に貼る断片 |
 | [codex-instruction-generator.md](prompts/codex-instruction-generator.md) | コードベースを読ませて Codex 向け実装指示書を作らせるプロンプト |
+| [beads-tickets.md](prompts/beads-tickets.md) | beads（bd）によるチケット制タスク管理の運用規約。グローバル CLAUDE.md に貼る断片 |
+
+## タスク管理（beads）
+
+このリポジトリのタスクは [beads](https://github.com/steveyegge/beads)（`bd`）で管理している。チケットの実体はローカルの Dolt DB（`.beads/embeddeddolt/`、git 管理外）にあり、`.beads/issues.jsonl` はその閲覧用エクスポート。マシン間同期はリモート追加後に `bd dolt push / pull` で行う。
+
+```bash
+brew install beads        # または npm install -g @beads/bd
+bd ready                  # 着手可能なタスク一覧
+```
+
+運用規約は [prompts/beads-tickets.md](prompts/beads-tickets.md) を参照。Claude Code / Codex 向けのフックや指示ファイルは `bd init` が自動でプロジェクト配下に導入する。
 
 ## スキルを追加する
 
