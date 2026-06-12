@@ -1,0 +1,90 @@
+# agent-setup
+
+Claude Code / Codex で使う自作スキルを、別のPCやプロジェクトにそのまま持ち込むための素材リポジトリ。
+
+`git clone` して `./install.sh` を流すと、`~/.claude/skills/` と `~/.codex/skills/` に symlink が張られ、どのプロジェクトで作業していても同じスキルが使える状態になる。スキルの実体はこのリポジトリ1箇所だけなので、`git pull` すれば全マシンに更新が行き渡る。
+
+## 構成
+
+```
+skills/            # スキルの実体（SKILL.md + シェルスクリプト。エージェント非依存）
+  x-bookmarks/     #   自分のXブックマークをローカル同期・検索
+.claude/skills     # -> ../skills へのsymlink（このリポジトリ内で作業する時用）
+install.sh         # ユーザースコープへの配線スクリプト
+```
+
+設計上のルール:
+
+- 個人データと認証情報はリポジトリに置かない。アーカイブは `~/.local/share/<skill>/`、認証は `~/.config/<skill>/` に逃がす。リポジトリに入るのはコードとドキュメントだけ。
+- スキルは Claude Code と Codex の両方から同じ実体を参照する（一段 symlink）。
+- 環境依存の機能（herdr、codex CLI など）はスキル側で実行時に検出し、無ければフォールバックする。
+
+## 動作環境
+
+- Linux / WSL2（macOS でも動くはずだが未検証）
+- bash, git, jq
+- Claude Code と Codex CLI はどちらか片方だけでもいい
+
+## インストール
+
+```bash
+git clone <this-repo> ~/prj/agent-setup
+cd ~/prj/agent-setup
+./install.sh
+```
+
+これで配線は終わり。オプションは3つ。
+
+```bash
+./install.sh --dry-run        # 何が起きるか先に見る
+./install.sh --claude-only    # Claude Code にだけ配線
+./install.sh --codex-only     # Codex にだけ配線
+```
+
+install.sh は何度実行しても安全。壊れたリンクは張り直し、リンク先が本当にこのリポジトリに解決されるかまで検証する。配線先に同名の実ディレクトリがあった場合は消さずに `*.bak.<日時>` に退避する。
+
+リポジトリを別の場所に移動したら `./install.sh` をもう一度実行すればいい。
+
+### スキルごとの初期設定
+
+配線しただけでは動かないスキルもある。必要なCLIツールや認証の手順は各スキルの SKILL.md に書いてあるので、使うものだけ済ませる。
+
+| スキル | 用途 | 必要なもの |
+|--------|------|-----------|
+| [x-bookmarks](skills/x-bookmarks/SKILL.md) | 自分のXブックマークを同期してローカル検索 | `uv tool install twitter-cli`、jq、XのCookie認証 |
+
+例えば x-bookmarks なら、twitter-cli を入れて `~/.config/x-bookmarks/auth.env` に Cookie を置き、初回同期を流すところまでやって初めて検索が動く。詳細は [SKILL.md](skills/x-bookmarks/SKILL.md) の Auth Setup を参照。
+
+## 使い方
+
+インストール後は、エージェントとの会話の中で自然に発動する。
+
+```
+あなた: ブックマークから Claude Code の便利な使い方を探して
+Claude: （x-bookmarks スキルが発動し、ローカルアーカイブを検索して結果を返す）
+```
+
+スキルを名指しで呼んでもいい（Claude Code なら `/x-bookmarks`）。スクリプトを直接叩く使い方も普通にできる:
+
+```bash
+bash skills/x-bookmarks/scripts/sync.sh        # 差分同期
+```
+
+## スキルを追加する
+
+1. `skills/<name>/SKILL.md` を作る（frontmatter に `name` と `description` が必須）
+2. `./install.sh` を再実行
+
+これだけ。スクリプトを持つスキルは、個人データの置き場所を `~/.local/share/<name>/` にする規約だけ守ること。
+
+## アンインストール
+
+```bash
+rm ~/.claude/skills/<name> ~/.codex/skills/<name>   # symlinkを消すだけ
+```
+
+実体とアーカイブ（`~/.local/share/<skill>/`）は残るので、消したければ別途。
+
+## 注意
+
+x-bookmarks は X の非公式API（Cookie認証）を使う。自分のデータの読み取りに限定し、短時間の連続実行は避けること。規約上はグレーなので、その点は理解した上で使ってほしい。
