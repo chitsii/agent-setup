@@ -76,6 +76,15 @@ beads がタスクの単一の受け皿となり、indexion の乖離検出結�
 - `bd setup` の書き換え範囲が不明: 実行前後で対象ファイルの diff を確認・提示する
 - 試験運用で beads が合わなかった場合: `.beads/` とフック設定を削除し、チケットを CLAUDE.md TODO に書き戻すだけで撤退できる(成果物がリポジトリ内に閉じているため)
 
+## 実施記録(2026-06-13、beads v1.0.5)
+
+実装は完了。設計時の前提(v1.0.4 時点の調査)と実挙動の差分:
+
+- `bd init` が `bd setup claude` / `bd setup codex` 相当(フック・AGENTS.md・スキル・CLAUDE.md 管理ブロック)を**全自動でプロジェクト配下に導入し、初回コミットまで自動実行**する。導入手順の 3 は不要だった。グローバル設定は書き換えられないことを確認済み
+- チケット実体(`.beads/embeddeddolt/`)は **gitignore されており git にコミットされない**。同期は git remote 上の `refs/dolt/data`(`bd dolt push/pull`)。リモート未設定の間の可視性確保として auto-export(`bd config set export.auto true`)を有効化し、`.beads/issues.jsonl` をコミット対象にした
+- `bd init` が CLAUDE.md に挿入する管理ブロックの内容が本設計の運用規約と一部重複するため、`prompts/beads-tickets.md` は管理ブロックを補完する横断ルールのみに絞った
+- 発見した問題は bd チケットとして起票: auto-export のコミットタイミング問題(agent-setup-bwg)、管理ブロックとハーネス規約の衝突(agent-setup-i8x)
+
 ## 検証(実機検証してから完了とする)
 
 1. `bd create` → `bd ready` → `bd close` の一連が動く
