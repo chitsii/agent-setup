@@ -55,6 +55,7 @@ install.sh は何度実行しても安全。壊れたリンクは張り直し、
 | [x-bookmarks](skills/x-bookmarks/SKILL.md) | 自分のXブックマークを同期してローカル検索 | `uv tool install twitter-cli`、jq、XのCookie認証 |
 | [codex-delegate](skills/codex-delegate/SKILL.md) | Codexへの実装委譲とコミット前セルフレビュー（ファイルベース・ポーリング不要） | codex CLI（herdrは任意） |
 | [doc-audit](skills/doc-audit/SKILL.md) | ドキュメントの鮮度切れ・コード乖離を検出して bd チケット化 | uv、git（bd は任意） |
+| [doc-render](skills/doc-render/SKILL.md) | mermaid 入り Markdown を日本語対応 A4 PDF にレンダリング | uv、Playwright Chromium |
 
 例えば x-bookmarks なら、twitter-cli を入れて `~/.config/x-bookmarks/auth.env` に Cookie を置き、初回同期を流すところまでやって初めて検索が動く。詳細は [SKILL.md](skills/x-bookmarks/SKILL.md) の Auth Setup を参照。
 
