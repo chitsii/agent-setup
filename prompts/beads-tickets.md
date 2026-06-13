@@ -35,6 +35,15 @@ watches:
 - 規模目安は子 2〜10件。**単発タスクを無理に Epic に入れない**(構造化自体がコストになる)
 - 進捗は `bd epic status`、全子完了後は `bd epic close-eligible` でクローズ
 
+### bd の守備範囲(知識は bd に入れない)
+
+- **bd はチケット管理専用**。`bd remember` / `bd memories` は使わない。プロジェクト知識(調査報告・決定・運用手順)は文書規約(doc-conventions)に従った frontmatter 付き Markdown に書く
+- `bd init` の管理ブロックが `bd remember` を推奨していても、本規約が優先する(ブロック自体は hash 管理のため編集しない)
+
+### 既知の注意点
+
+- **階層親(`--parent`)は parent-child 依存と同一表現**(bd v1.0.5 実測)。`bd dep remove <child> <epic>` は Epic の親子リンクごと消すので、Epic 配下の子に対する依存操作は `bd show` で親が残っているか確認する
+
 ### 未導入リポジトリでの振る舞い
 
 `.beads/` が無いリポジトリでは無理に使わない。セッションをまたぐタスクリストが必要になったら `bd init` の実行をユーザーに提案する。なお `bd init` はフック導入・CLAUDE.md / AGENTS.md への追記・初回 git コミットまで自動で行うので、実行前にその旨をユーザーに伝えること。
