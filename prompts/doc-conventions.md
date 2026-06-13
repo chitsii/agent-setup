@@ -23,6 +23,7 @@ watches:
 | `plan` | 記録 | `docs/plans/YYYY-MM-DD-<topic>.md` | 不要 |
 | `decision` | 記録 | `docs/decisions/NNNN-<topic>.md`(MADR v4 準拠) | 不要 |
 | `handoff` | 記録 | 使用するハンドオフツールの既定に従う | 不要 |
+| `report` | 記録 | `docs/reports/YYYY-MM-DD-<topic>.md`(調査報告・検証記録) | 不要 |
 | `runbook` | 生きた文書 | `docs/runbooks/<topic>.md` | **必須** |
 | `readme` | 生きた文書 | リポジトリ直下・各ディレクトリ | **必須**(直下 README.md のみ frontmatter 省略可) |
 
