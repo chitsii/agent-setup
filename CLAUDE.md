@@ -8,7 +8,7 @@ Claude Code / Codex 共用のスキルとプロンプト集を配布するため
 
 ## タスク管理
 
-タスクは beads（`bd`）で管理する。Markdown の TODO リストはもう作らない。運用規約は [prompts/beads-tickets.md](prompts/beads-tickets.md) を参照（本リポジトリで試験運用中。検証後にグローバル CLAUDE.md へ昇格予定）。セッション開始時は `bd ready`。
+タスクは beads（`bd`）で管理する。Markdown の TODO リストはもう作らない。運用規約は [prompts/beads-tickets.md](prompts/beads-tickets.md) を参照（本リポジトリで試験運用中。検証後にグローバル CLAUDE.md / AGENTS.md へ昇格予定）。セッション開始時は `bd ready`。
 
 ## ドキュメント規約
 

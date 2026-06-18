@@ -1,15 +1,15 @@
 ---
 type: runbook
 owner: chitsii
-last_reviewed: 2026-06-13
+last_reviewed: 2026-06-14
 review_cycle_days: 180
 watches:
   - skills/doc-audit/**
 ---
 
-# ドキュメント規約(CLAUDE.md 断片)
+# ドキュメント規約(CLAUDE.md / AGENTS.md 断片)
 
-グローバル CLAUDE.md または各リポジトリの CLAUDE.md に貼って使う。検出の実行系は doc-audit スキル(agent-setup リポジトリ)が担う。
+グローバル CLAUDE.md / AGENTS.md、または各リポジトリの CLAUDE.md / AGENTS.md に貼って使う。検出の実行系は doc-audit スキル(agent-setup リポジトリ)が担う。
 
 ## 原則: 腐る対象を減らす
 
@@ -28,7 +28,7 @@ watches:
 | `readme` | 生きた文書 | リポジトリ直下・各ディレクトリ | **必須**(直下 README.md のみ frontmatter 省略可) |
 
 - 置き場所は迷わないための既定。リポジトリや既存ツール(superpowers の `docs/superpowers/specs/` 等)に確立済みの場所があればそちらを優先してよい。**判定は type のみで行われ、場所は問わない**
-- CLAUDE.md 断片・運用規約のような配布断片は `runbook` 扱い
+- CLAUDE.md / AGENTS.md 断片・運用規約のような配布断片は `runbook` 扱い
 - **記録は不変**: 間違いや実態との乖離は本文を書き換えず「追記(実施記録・訂正)」で正す
 
 ## 生きた文書の frontmatter

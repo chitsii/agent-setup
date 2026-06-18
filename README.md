@@ -9,7 +9,7 @@ Claude Code / Codex で使う自作スキルを、別のPCやプロジェクト�
 ```
 skills/            # スキルの実体（SKILL.md + シェルスクリプト。エージェント非依存）
   x-bookmarks/     #   自分のXブックマークをローカル同期・検索
-prompts/           # コピペで使うプロンプト集（CLAUDE.md断片など）
+prompts/           # コピペで使うプロンプト集（CLAUDE.md / AGENTS.md 断片など）
 .claude/skills     # -> ../skills へのsymlink（このリポジトリ内で作業する時用）
 install.sh         # ユーザースコープへの配線スクリプト
 ```
@@ -80,10 +80,10 @@ bash skills/x-bookmarks/scripts/sync.sh        # 差分同期
 
 | ファイル | 中身 |
 |----------|------|
-| [fable-codex-collab.md](prompts/fable-codex-collab.md) | Fable=設計/レビュー、Codex=実装の役割分担。CLAUDE.md に貼る断片 |
+| [fable-codex-collab.md](prompts/fable-codex-collab.md) | Fable=設計/レビュー、Codex=実装の役割分担。CLAUDE.md / AGENTS.md に貼る断片 |
 | [codex-instruction-generator.md](prompts/codex-instruction-generator.md) | コードベースを読ませて Codex 向け実装指示書を作らせるプロンプト |
-| [beads-tickets.md](prompts/beads-tickets.md) | beads（bd）によるチケット制タスク管理の運用規約。グローバル CLAUDE.md に貼る断片 |
-| [doc-conventions.md](prompts/doc-conventions.md) | ドキュメントの種類・置き場所・鮮度管理（frontmatter）の規約。CLAUDE.md に貼る断片 |
+| [beads-tickets.md](prompts/beads-tickets.md) | beads（bd）によるチケット制タスク管理の運用規約。グローバル CLAUDE.md / AGENTS.md に貼る断片 |
+| [doc-conventions.md](prompts/doc-conventions.md) | ドキュメントの種類・置き場所・鮮度管理（frontmatter）の規約。CLAUDE.md / AGENTS.md に貼る断片 |
 
 ## タスク管理（beads）
 

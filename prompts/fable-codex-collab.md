@@ -1,13 +1,13 @@
 ---
 type: runbook
 owner: chitsii
-last_reviewed: 2026-06-13
+last_reviewed: 2026-06-14
 review_cycle_days: 180
 ---
 
 # Fable×Codex 協業方針
 
-プロジェクトの CLAUDE.md またはグローバル `~/.claude/CLAUDE.md` に、下の区切り線から先をコピーして使う断片。
+プロジェクトまたはグローバルの CLAUDE.md / AGENTS.md に、下の区切り線から先をコピーして使う断片。
 
 Fable 5 はトークン消費が激しいので、設計・レビューに専念させて実装を Codex に回す構成。元ネタは [masa_okamura108氏](https://x.com/masa_okamura108/status/2064841547624145269) と [cwmasaki氏](https://x.com/cwmasaki/status/2064547052366049533) のポストで、委譲コマンドはこのリポジトリで実機検証済みのものに差し替えてある。
 

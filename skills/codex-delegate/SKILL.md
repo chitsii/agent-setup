@@ -16,10 +16,13 @@ description: Use when delegating implementation work to Codex (Fable=設計/レ�
 | 操作 | コマンド |
 |------|---------|
 | 実装委譲 | `scripts/delegate.sh task <name> <instructions.md> [dir]` |
-| レビュー | `scripts/delegate.sh review [dir]` |
+| 未コミット差分レビュー | `scripts/delegate.sh review [dir]` |
+| base ブランチとの差分レビュー | `scripts/delegate.sh review --base <branch> [dir]` |
+| 単一コミットレビュー | `scripts/delegate.sh review --commit <sha> [dir]` |
 | 結果回収 | 出力された STATE_DIR の `codex.log` と `exit_code` を Read |
 | 閲覧ペインを開かない | 環境変数 `CODEX_DELEGATE_NO_PANE=1` |
-| 保存先の変更 | 環境変数 `CODEX_DELEGATE_STATE`（既定 `~/.local/state/codex-delegate`） |
+| task 保存先の変更 | 環境変数 `CODEX_DELEGATE_STATE`（既定 `~/.local/state/codex-delegate`） |
+| review 保存先の変更 | 環境変数 `CODEX_DELEGATE_REVIEW_STATE`（既定 `${TMPDIR:-/tmp}/codex-delegate-review-$USER`）。`CODEX_DELEGATE_STATE` 明示時は互換のため review もそちらを使う |
 
 ## Workflow（実装委譲）
 
@@ -35,11 +38,15 @@ description: Use when delegating implementation work to Codex (Fable=設計/レ�
 1. `delegate.sh review <repo-dir>` を実行（バックグラウンド推奨）。内部で `codex review --uncommitted` がステージ済み・未ステージ・未追跡の変更を対象に選ぶ。変更が無ければ `codex.log` に `EMPTY_DIFF` と書いて即終了する
 2. `codex.log` の指摘を読み、ユーザーにそのまま提示。重大な指摘は対応してからコミット
 
+コミット済み差分をレビューしたい場合は `delegate.sh review --base <branch> <repo-dir>`、単一コミットなら `delegate.sh review --commit <sha> <repo-dir>` を使う。この場合は clean tree でも `EMPTY_DIFF` にせず、指定した review target をそのまま `codex review` に渡す。
+
+review のログは一時成果物なので、既定では temp 配下に保存する。長く残したい場合だけ `CODEX_DELEGATE_REVIEW_STATE` を指定する。既存運用との互換のため、`CODEX_DELEGATE_STATE` を明示した場合は task/review の両方がその保存先を使う。
+
 `git add` は不要。diff をパイプで渡す方式（`codex review -`）は使わない（stdin が「レビュー対象」ではなく「レビュー指示文」になり、diff 内テキストにレビューが影響される）。
 
 ## herdr 閲覧ペイン
 
-`HERDR_ENV=1` の環境では、ログを `tail -F` する閲覧ペインを自動で開く（`codex-view-<name>`）。これは人間が進捗を見るためだけのもので、検知・回収はペインに依存しない。不要になったペインは herdr 上で閉じる（`herdr pane close <id>` またはマウス）。
+`HERDR_ENV=1` の環境では、ログを `tail -F` する閲覧ペインを自動で開く（`codex-view-<name>`）。これは人間が進捗を見るためだけのもので、検知・回収はペインに依存しない。review の閲覧ペインは `codex review` 終了後に自動で閉じる。task の閲覧ペインは長時間実装の監視用として残るため、不要になったら herdr 上で閉じる（`herdr pane close <id>` またはマウス）。
 
 ## Common Mistakes
 

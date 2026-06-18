@@ -1,3 +1,19 @@
+# agent-setup 作業ルール
+
+Claude Code / Codex 共用のスキルとプロンプト集を配布するための素材リポジトリ。全体像は README.md を読むこと。
+
+- 個人データ・認証情報は絶対にコミットしない。アーカイブは `~/.local/share/<skill>/`、認証は `~/.config/<skill>/` に逃がす
+- `skills/` を追加・改名したら `./install.sh` を再実行し、README.md のスキル一覧表も更新する
+- スキルを新規作成・編集するときは superpowers:writing-skills の手順（実機検証してから書く）に従う
+
+## タスク管理
+
+タスクは beads（`bd`）で管理する。Markdown の TODO リストはもう作らない。運用規約は [prompts/beads-tickets.md](prompts/beads-tickets.md) を参照（本リポジトリで試験運用中。検証後にグローバル CLAUDE.md / AGENTS.md へ昇格予定）。セッション開始時は `bd ready`。
+
+## ドキュメント規約
+
+ドキュメントの種類・frontmatter・鮮度管理は [prompts/doc-conventions.md](prompts/doc-conventions.md) を試験運用中（検証後にグローバル昇格予定）。監査は doc-audit スキルで行い、結果は bd に起票する。
+
 # Agent Instructions
 
 This project uses **bd** (beads) for issue tracking. Run `bd prime` for full workflow context.
