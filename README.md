@@ -29,7 +29,7 @@ install.sh         # ユーザースコープへの配線スクリプト
 ## インストール
 
 ```bash
-git clone <this-repo> ~/prj/agent-setup
+git clone https://github.com/chitsii/agent-setup.git ~/prj/agent-setup
 cd ~/prj/agent-setup
 ./install.sh
 ```
